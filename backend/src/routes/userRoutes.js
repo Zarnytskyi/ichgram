@@ -1,12 +1,23 @@
 import express from "express";
-import { updateUser, followUser, unfollowUser, getUserProfile } from "../controllers/userController.js";
-import { isAuth } from "../middlewares/isAuth.js";
+import { editProfile, followUser, unfollowUser, getProfile } from "../controllers/userController.js";
+import { isAuth } from "../middleware/auth.js";
+import upload from "../middleware/multer.js";
 
 const router = express.Router();
 
-router.get("/:id", getUserProfile);
+router.get("/:id", getProfile);
 
-router.put("/update", isAuth, updateUser);
+router.post(
+  '/edit',
+  isAuth,
+  (req, res, next) => {
+    upload.single('avatar')(req, res, function(err) {
+      if (err) return res.status(500).json({ message: err.message, success: false });
+      next();
+    });
+  },
+  editProfile
+);
 
 router.post("/:id/follow", isAuth, followUser);
 

@@ -5,6 +5,12 @@ import express from 'express';
 import connectDB from './config/db.js';
 import cors from 'cors';
 import cookieParser from "cookie-parser";
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/userRoutes.js";
+
+import './models/User.js';
+import './models/Post.js';
+import './models/User.js';
 
 const app = express();
 connectDB();
@@ -20,5 +26,8 @@ app.use(
 		credentials: true,
 	})
 );
+
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
