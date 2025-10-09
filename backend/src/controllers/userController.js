@@ -70,7 +70,7 @@ export const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -142,24 +142,23 @@ export const editProfile = async (req, res) => {
 
 export const getProfile = async (req, res) => {
   try {
-    const userId = req.params.id;
+    let userId = req.params.id;
 
-    const user = await User.findById(userId)
-      .select("-password")
-      .populate({ path: 'posts', options: { sort: { createdAt: -1 } } })
+    if (userId === "me") {
+      if (!req.user) return res.status(401).json({ message: "Unauthorized", success: false });
+      userId = req.user.id;
+    }
 
-    if (!user)
-      return res
-        .status(404)
-        .json({ message: "User not found", success: false });
+    const user = await User.findById(userId).select("-password");
+    if (!user) return res.status(404).json({ message: "User not found", success: false });
 
-    return successResponse(res, "User found successfully", {
-      user: formatUser(user),
-    });
-  } catch (error) {
-    return errorResponse(res, error.message, 500);
+    res.json({ user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", success: false });
   }
 };
+
 
 export const followUser = async (req, res) => {
   try {
@@ -224,5 +223,18 @@ export const unfollowUser = async (req, res) => {
     });
   } catch (error) {
     return errorResponse(res, error.message, 500);
+  }
+};
+
+export const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("username avatarUrl");
+    if (!user) {
+      return res.status(404).json({ message: "Пользователь не найден", success: false });
+    }
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Ошибка сервера", success: false });
   }
 };

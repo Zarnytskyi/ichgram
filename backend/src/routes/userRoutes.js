@@ -1,9 +1,11 @@
 import express from "express";
-import { editProfile, followUser, unfollowUser, getProfile } from "../controllers/userController.js";
+import { editProfile, followUser, unfollowUser, getProfile, getCurrentUser } from "../controllers/userController.js";
 import { isAuth } from "../middleware/auth.js";
 import upload from "../middleware/multer.js";
 
 const router = express.Router();
+
+router.get("/me", isAuth, getCurrentUser);
 
 router.get("/:id", getProfile);
 
