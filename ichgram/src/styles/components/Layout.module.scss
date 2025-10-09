@@ -1,0 +1,12 @@
+.layoutWrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding-left: 240px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

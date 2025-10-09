@@ -1,0 +1,128 @@
+@use '../mixins' as *;
+@use 'sass:color';
+
+$color-primary: #0095f6;
+$color-white: #ffffff;
+$color-border-light: #dbdbdb;
+$color-background-light: #fafafa;
+$color-text-dark: #262626;
+$color-text-gray: #8e8e8e;
+$color-text-link: #00376b;
+
+.pageWrapper {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background-color: $color-background-light;
+padding: 20px;
+}
+
+.signUpBox {
+background-color: $color-white;
+border: 1px solid $color-border-light;
+border-radius: 1px;
+padding: 10px 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+max-width: 350px;
+margin-bottom: 10px;
+}
+
+.logo {
+font-family: 'Billabong', cursive;
+font-size: 52px;
+margin: 22px 0 10px 0;
+color: $color-text-dark;
+font-weight: 400;
+text-align: center;
+}
+
+.subtitle {
+color: $color-text-gray;
+font-weight: 600;
+font-size: 17px;
+line-height: 20px;
+text-align: center;
+margin: 0 40px 10px;
+}
+
+.signUpForm {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 80%;
+max-width: 270px;
+margin-top: 10px;
+}
+
+.inputGroup {
+width: 100%;
+margin-bottom: 6px;
+
+.selectField {
+width: 100%;
+padding: 9px 8px;
+border: 1px solid $color-border-light;
+border-radius: 3px;
+background-color: $color-background-light;
+font-size: 12px;
+box-sizing: border-box;
+color: $color-text-dark;
+cursor: pointer;
+
+&:not([value=""]):valid {
+  color: $color-text-dark;
+}
+
+option[value=""] {
+  color: $color-text-gray;
+}
+
+}
+}
+
+.policyText {
+color: $color-text-gray;
+font-size: 11px;
+line-height: 14px;
+text-align: center;
+margin: 10px 0;
+
+a {
+color: $color-text-link;
+text-decoration: none;
+font-weight: 600;
+@include transition(color, 0.2s);
+
+&:hover {
+  color: color.adjust($color-text-link, $lightness: -10%);
+}
+
+}
+}
+
+.redirectBox {
+background-color: $color-white;
+border: 1px solid $color-border-light;
+border-radius: 1px;
+width: 100%;
+max-width: 350px;
+padding: 20px 0;
+text-align: center;
+}
+
+.redirectText {
+font-size: 14px;
+color: $color-text-dark;
+
+span {
+color: $color-primary;
+font-weight: 600;
+cursor: pointer;
+text-decoration: none;
+}
+}

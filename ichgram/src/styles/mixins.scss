@@ -1,0 +1,15 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin card {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+@mixin transition($properties, $duration: 0.3s, $timing: ease-in-out, $delay: 0s) {
+  transition: $properties $duration $timing $delay;
+}

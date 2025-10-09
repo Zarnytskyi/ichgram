@@ -1,0 +1,78 @@
+// Файл: src/styles/base/base.module.scss
+
+// Если у вас нет отдельного файла variables, добавьте их здесь:
+$color-primary: #0095f6;
+$color-white: #ffffff;
+$color-border-light: #dbdbdb;
+$color-background-light: #fafafa;
+$color-text-dark: #262626;
+
+// Миксин transition (можно перенести в base/mixins.scss)
+@mixin transition($properties, $duration: 0.3s, $timing: ease-in-out, $delay: 0s) {
+  transition: $properties $duration $timing $delay;
+}
+
+// 1. Стили для поля ввода (<Input>)
+.inputGroup {
+  width: 100%;
+  margin-bottom: 6px;
+  
+  label {
+    // В Instagram метки скрыты, так как используется только placeholder
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  input {
+    width: 100%;
+    padding: 9px 8px;
+    border: 1px solid $color-border-light;
+    border-radius: 3px;
+    background-color: $color-background-light;
+    font-size: 12px; // Поля ввода Instagram обычно имеют меньший шрифт
+    box-sizing: border-box; 
+    
+    &::placeholder {
+        color: #8e8e8e;
+    }
+    
+    &:focus {
+        outline: none;
+        border-color: #a8a8a8;
+    }
+  }
+}
+
+// 2. Стили для кнопки (<Button>)
+.button {
+    width: 100%;
+    height: 30px;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600; // Жирнее для кнопки
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 9px;
+    margin-top: 8px; // Небольшой отступ сверху
+    box-sizing: border-box;
+    opacity: 1; // Управляем непрозрачностью для disabled
+    @include transition(opacity, 0.2s);
+
+    &:hover:not(:disabled) {
+        // Незначительное затемнение или изменение непрозрачности при наведении
+        opacity: 0.8;
+    }
+    
+    &:disabled {
+        opacity: 0.7; // Кнопка становится светлее при disabled
+        cursor: default;
+    }
+}

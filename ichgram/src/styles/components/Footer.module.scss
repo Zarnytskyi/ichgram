@@ -1,0 +1,33 @@
+$color-text-gray-light: #c7c7c7;
+$color-text-gray-dark: #8e8e8e;
+$font-size-small: 12px;
+
+.footer {
+  width: 100%;
+  padding: 30px 20px;
+  text-align: center;
+  margin-top: auto;
+  border-top: 1px solid transparent;
+  background-color: transparent;
+}
+
+.links {
+  margin-bottom: 10px;
+}
+
+.link {
+  color: $color-text-gray-dark;
+  text-decoration: none;
+  font-size: $font-size-small;
+  margin: 0 8px;
+  transition: color 0.15s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.copyright {
+  color: $color-text-gray-dark;
+  font-size: $font-size-small;
+}
