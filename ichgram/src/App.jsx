@@ -9,6 +9,11 @@ import Home from "./pages/Home.jsx";
 import CreatePost from "./pages/CreatePost.jsx";
 
 import useUser from "./hooks/useUser";
+import Profile from "./pages/Profile.jsx";
+import EditProfile from "./pages/Edit-Profile.jsx";
+import UserSearch from "./pages/UserSearch.jsx";
+import Explore from "./pages/Explore.jsx";
+import NotificationsList from "./pages/NotificationList.jsx";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -41,8 +46,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreatePost />} />
-          <Route path="/search" element={<div>Страница поиска</div>} />
-          <Route path="/explore" element={<div>Страница интересного</div>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/search" element={<UserSearch/>} />
+          <Route path="/explore" element={<Explore/>} />
+          <Route path="/notifications" element={<NotificationsList />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>

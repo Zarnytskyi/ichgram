@@ -100,10 +100,6 @@ $color-error: #ed4956;
   cursor: pointer;
   transition: background-color 0.2s;
   z-index: 10;
-
-  &:hover {
-    background-color: darken($color-primary, 10%);
-  }
 }
 .infoSection {
   width: 340px; 

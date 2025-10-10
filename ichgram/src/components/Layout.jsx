@@ -8,11 +8,10 @@ const Layout = ({ children }) => {
     <div className={styles.layoutWrapper}>
       <Sidebar />
 
-      <main className={styles.mainContent}>
-        {children}
-      </main>
-
-      <Footer /> 
+      <div className={styles.mainArea}>
+        <main className={styles.mainContent}>{children}</main>
+        <Footer />
+      </div>
     </div>
   );
 };

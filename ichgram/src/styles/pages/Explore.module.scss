@@ -1,0 +1,60 @@
+$color-border-light: #dbdbdb;
+$color-text-dark: #262626;
+$color-background: #fafafa;
+$grid-max-width: 935px;
+
+.exploreContainer {
+  padding: 10px 5px;
+  background-color: $color-background;
+  min-height: 100vh;
+  margin: 0 auto;
+  max-width: $grid-max-width;
+}
+
+.exploreGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.postCard {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  background-color: $color-border-light;
+  cursor: pointer;
+  
+  a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: $color-text-dark;
+  }
+}
+
+.postImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.postCard p {
+    display: none;
+}
+
+.postCard:hover .postImage {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .exploreContainer {
+    padding: 10px 10px 50px;
+  }
+
+  .exploreGrid {
+    gap: 5px;
+  }
+}

@@ -1,0 +1,140 @@
+$color-border-light: #dbdbdb;
+$color-primary: #0095f6;
+$color-text-dark: #262626;
+$color-text-gray: #8e8e8e;
+$color-background: #fafafa;
+$color-background-light: #f7f7f7;
+$search-content-width: 600px;
+
+.userSearch {
+  margin: 50px auto;
+  padding: 40px;
+  background-color: white;
+  border: 1px solid $color-border-light;
+  border-radius: 8px;
+  width: $search-content-width;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 18px;
+  border: 1px solid $color-border-light;
+  border-radius: 10px;
+  background-color: $color-background-light;
+  font-size: 16px;
+  color: $color-text-dark;
+  margin-bottom: 25px;
+
+  &::placeholder {
+    color: $color-text-gray;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-text-gray;
+    background-color: white;
+  }
+}
+
+.loading, .empty {
+  color: $color-text-gray;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+.userList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-background-light;
+    border-color: $color-border-light;
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.userCard span {
+  font-weight: 600;
+  font-size: 16px;
+  color: $color-text-dark;
+}
+
+.buttons {
+  display: flex;
+  align-items: center; /* Выравнивание текста и кнопок */
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+.isFollowingText {
+  color: $color-text-gray;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 12px; /* Для выравнивания с кнопками */
+}
+
+.followBtn, .profileBtn {
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 100px; /* Фиксированная ширина для кнопок */
+}
+
+.followBtn {
+  background-color: $color-primary;
+  color: white;
+  border: 1px solid $color-primary;
+  
+  &:hover:not(:disabled) {
+    background-color: darken($color-primary, 10%);
+  }
+
+  &:disabled {
+    background-color: lighten($color-primary, 15%);
+    border-color: lighten($color-primary, 15%);
+    cursor: default;
+  }
+}
+
+.profileBtn {
+  background-color: white;
+  color: $color-primary;
+  border: 1px solid $color-primary;
+
+  &:hover {
+    background-color: $color-background-light;
+  }
+}
